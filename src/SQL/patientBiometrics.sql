@@ -10,7 +10,7 @@ FROM
     SENSOR_INFORMATION sensors
     INNER JOIN EXAMINATION e ON sensors.ID = e.Sensor_ID
 WHERE
-    e.Patient_ID = & pId
+    e.Patient_ID = &pId
 GROUP BY
     spo2,
     hPulse,
