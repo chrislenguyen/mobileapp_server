@@ -10,13 +10,6 @@ FROM
     SENSOR_INFORMATION sensors
     INNER JOIN EXAMINATION e ON sensors.ID = e.Sensor_ID
 WHERE
-    e.Patient_ID = &pId
-GROUP BY
-    spo2,
-    hPulse,
-    height,
-    weight,
-    bmi,
-    temperature
+    e.Patient_ID = 10
 ORDER BY
-    e.Exam_Date
+    e.Exam_Date FOR JSON AUTO
