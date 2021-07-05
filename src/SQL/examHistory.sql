@@ -9,6 +9,7 @@ SELECT
     spo2,
     temperature,
     weight,
+    hosName,
     medName,
     medQuantity,
     medDes
@@ -24,10 +25,12 @@ FROM
             sensor_info.Height height,
             sensor_info.SPO2 spo2,
             sensor_info.Temperature temperature,
-            sensor_info.Weight weight
+            sensor_info.Weight weight,
+            hospital.Hospital_Name hosName
         FROM
             EXAMINATION examination
             LEFT JOIN SENSOR_INFORMATION sensor_info ON examination.Sensor_ID = sensor_info.ID
+            LEFT JOIN HOSPITAL hospital ON examination.Hospital_ID = hospital.Hospital_ID
         WHERE
             examination.Patient_ID = &pId
     ) AS exs
